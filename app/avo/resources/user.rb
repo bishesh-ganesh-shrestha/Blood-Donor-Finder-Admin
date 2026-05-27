@@ -11,6 +11,13 @@ class Avo::Resources::User < Avo::BaseResource
     field :name, as: :text
     field :phone_number, as: :text
     field :is_admin, as: :boolean
-    field :jti, as: :text
+    field :is_donor, as: :boolean, sortable: false do
+      record.is_donor?
+    end
+    field :created_at, as: :date_time
+    field :updated_at, as: :date_time
+
+    field :donor_profile, as: :has_one
+    field :blood_requests, as: :has_many
   end
 end
